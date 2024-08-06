@@ -1,0 +1,26 @@
+[09:02:47] Info: Render API: 2
+[09:02:47] mray_gstreamer_initialize
+[09:02:47] Initializing GStreamer Engine
+[09:02:47] Initializing GStreamer Engine - Done
+[09:02:47] Initializing GStreamer
+[09:02:48] GStreamerCore - Registering Elements!
+[09:02:48] GStreamerCore - GStreamer inited
+[09:02:48] Initializing GStreamer - Done
+[09:02:48] Entering main loop
+[09:02:48] mray_gstreamer_initialize
+[09:02:51] Info: Creating Pipeline: appsrc name=src format=time do-timestamp=true is-live=true block=true ! video/x-raw,format=RGB,width=640,height=480,framerate=30/1 ! videoconvert  ! video/x-raw,format=I420 ! videoconvert ! video/x-raw,format=I420 ! videoflip method=vertical-flip ! x264enc name=videoEnc bitrate=5000 tune=zerolatency pass=qual ! rtph264pay config-interval=1 name=pay0 pt=96 ! udpsink host=172.17.99.146 port=7000 sync=false 
+[09:02:51] Info: : GstPipelineHandler::CreatePipeline 
+[09:02:51] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[09:02:51] Info: : Pausing
+[09:02:51] Info: : Playing
+[09:02:51] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[09:02:51] Info: : Playing
+[09:02:51] Info: : Pipeline State Changes:  GST_STATE_PAUSED--> GST_STATE_PLAYING
+[09:03:40] Info: : Pausing
+[09:03:40] Info: : GstPipelineHandler::Stop 
+[09:03:40] Info: : GstPipelineHandler::Close 
+[09:03:40] Info: : GstPipelineHandler::Stop 
+[09:03:40] Info: : Pausing
+[09:03:40] Info: : GstPipelineHandler::Stop 
+[09:03:40] Info: : GstPipelineHandler::Close 
+[09:03:40] Info: : GstPipelineHandler::Stop 
