@@ -12,7 +12,6 @@
       },
       "url": "https://unity.pkg.cesium.com"
     },
-<<<<<<< HEAD
     "com.postert.projnetforgeoapiforunity": {
       "version": "https://github.com/Postert/ProjNet4GeoAPI-For-Unity.git",
       "depth": 0,
@@ -20,8 +19,6 @@
       "dependencies": {},
       "hash": "e033ddc108295c69af88effebae59370c0ba4001"
     },
-=======
->>>>>>> 9971ba4bfb3b64a981b9c73d952c63b595e43762
     "com.unity.ai.navigation": {
       "version": "2.0.0",
       "depth": 0,
@@ -124,7 +121,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
     "com.unity.probuilder": {
       "version": "6.0.1",
       "depth": 0,
@@ -137,8 +133,6 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> 9971ba4bfb3b64a981b9c73d952c63b595e43762
     "com.unity.render-pipelines.core": {
       "version": "17.0.3",
       "depth": 1,

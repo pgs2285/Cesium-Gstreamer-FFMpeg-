@@ -208,8 +208,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69813205}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.2678309, y: -0.50714743, z: 0.16948411, w: 0.8014632}
+  m_LocalPosition: {x: -469.91748, y: 8.021426, z: 3151.9648}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69813205}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0d930d23b638be408c68c5c768d4b72, type: 3}
   m_Name: 
@@ -837,7 +837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _showCreditsOnScreen: 0
   _tilesetSource: 1
-  _url: https://cdn.vworld.kr/TDServer/services/map3/lod4.json
+  _url: http://localhost:3000/data/new/sinsung/tileset.json
   _ionAssetID: 0
   _ionAccessToken: 
   _ionServer: {fileID: 11400000, guid: 17d0e143dc7f3634283e4020212dc58a, type: 2}
@@ -863,7 +863,7 @@ MonoBehaviour:
   _showTilesInHierarchy: 1
   _updateInEditor: 1
   _logSelectionStats: 0
-  _createPhysicsMeshes: 1
+  _createPhysicsMeshes: 0
 --- !u!114 &1480044866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,13 +877,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ellipsoidOverride: {fileID: 0}
-  _originAuthority: 0
-  _latitude: 37.526126
-  _longitude: 126.922255
-  _height: 40
-  _ecefX: -3042503.6922682766
-  _ecefY: 4048958.027842697
-  _ecefZ: 3863888.5111919004
+  _originAuthority: 1
+  _latitude: 36.352821143704205
+  _longitude: 127.37090515106432
+  _height: 120.50508303707537
+  _ecefX: -3121650.7950125607
+  _ecefY: 4087249.578671965
+  _ecefZ: 3759864.9369007163
   _scale: 1
 --- !u!114 &1480044867
 MonoBehaviour:
@@ -892,7 +892,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480044862}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 084b1214035f3f1448598e87d3e0c5ce, type: 3}
   m_Name: 
@@ -1034,8 +1034,8 @@ GameObject:
   - component: {fileID: 1805223567}
   - component: {fileID: 1805223566}
   - component: {fileID: 1805223565}
-  - component: {fileID: 1805223564}
-  - component: {fileID: 1805223568}
+  - component: {fileID: 1805223569}
+  - component: {fileID: 1805223570}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1043,27 +1043,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1805223564
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805223563}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1805223565
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1116,7 +1095,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805223563}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!4 &1805223567
 Transform:
   m_ObjectHideFlags: 0
@@ -1132,7 +1111,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1805223568
+--- !u!114 &1805223569
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1141,12 +1120,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1805223563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b29a5872289de9349bb16d5f25d8e87c, type: 3}
+  m_Script: {fileID: 11500000, guid: 83ae13dc6453eb349aac1d292f3b262c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyToController: {fileID: 0}
-  locations: []
-  yawAndPitchAngles: []
+  cesiumTileset: {fileID: 1480044865}
+--- !u!114 &1805223570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805223563}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e70b0bfcdcf2cd4396f81757249c4f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1835191861
 GameObject:
   m_ObjectHideFlags: 0

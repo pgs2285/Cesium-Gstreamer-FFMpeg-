@@ -1,9 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
-using ProjNet.CoordinateSystems;
-using ProjNet.CoordinateSystems.Transformations;
 using Mono.Data.Sqlite;
 using System.Collections;
+using System.Threading.Tasks;
 
 public class MapDataProcessor : MonoBehaviour
 {
@@ -11,7 +10,6 @@ public class MapDataProcessor : MonoBehaviour
     public string databasePath = "/seoul.sqlite";
     public string tableName = "idx_al_d010_11_20240706_GEOMETRY";
 
-    // 로드할 데이터의 최대 개수
     public int batchSize = 1000;
 
     private float minX = float.MaxValue;
@@ -25,10 +23,9 @@ public class MapDataProcessor : MonoBehaviour
 
     void Start()
     {
-        // SQLite 데이터베이스 연결
         string dbPath = "URI=file:" + Application.dataPath + databasePath;
         _connection = new SqliteConnection(dbPath);
-        _connection.Open(); // SQLite 연결 열기
+        _connection.Open();
 
         // 데이터 읽기 및 처리
         StartCoroutine(ProcessData(0, batchSize));
@@ -51,7 +48,7 @@ public class MapDataProcessor : MonoBehaviour
             }
 
             offset += batchSize;
-            yield return null; // 프레임을 양보하여 UI가 멈추지 않도록 함
+            yield return null;
         }
 
         // 중심점을 계산합니다.
@@ -65,8 +62,17 @@ public class MapDataProcessor : MonoBehaviour
             List<MyDataClass> coordinates = ReadData(offset, batchSize);
             if (coordinates.Count == 0) break;
 
-            // 현재 배치를 사용하여 메쉬 생성
-            CreateMesh(coordinates, offset / batchSize);
+            // Task를 통해 병렬 작업 수행
+            Task<MeshData> meshDataTask = Task.Run(() => PrepareMeshData(coordinates));
+
+            // 완료될 때까지 기다림
+            while (!meshDataTask.IsCompleted)
+            {
+                yield return null; // 프레임을 양보하여 UI가 멈추지 않도록 함
+            }
+
+            // 메인 스레드에서 메쉬 생성
+            CreateMesh(meshDataTask.Result, offset / batchSize);
 
             offset += batchSize;
             yield return null;
@@ -98,33 +104,26 @@ public class MapDataProcessor : MonoBehaviour
         return result;
     }
 
-    void CreateMesh(List<MyDataClass> coordinates, int batchIndex)
+    MeshData PrepareMeshData(List<MyDataClass> coordinates)
     {
-        GameObject mapBatch = new GameObject($"MapBatch_{batchIndex}", typeof(MeshFilter), typeof(MeshRenderer));
-        MeshFilter meshFilter = mapBatch.GetComponent<MeshFilter>();
-        MeshRenderer meshRenderer = mapBatch.GetComponent<MeshRenderer>();
-
-        meshRenderer.material = material;
-
         List<Vector3> vertices = new List<Vector3>();
         List<int> triangles = new List<int>();
 
-        float scale = 10f; // 확대 비율을 조정
+        float scale = 10f;
 
         foreach (var coord in coordinates)
         {
             Vector2 convertedMin = new Vector2(coord.xmin, coord.ymin) * 1000;
             Vector2 convertedMax = new Vector2(coord.xmax, coord.ymax) * 1000;
 
-            // 중심점 기준으로 좌표 이동
             convertedMin -= new Vector2(centerX, centerY) * 1000;
             convertedMax -= new Vector2(centerX, centerY) * 1000;
 
             Vector2 normalizedMin = NormalizeCoordinates(convertedMin);
             Vector2 normalizedMax = NormalizeCoordinates(convertedMax);
 
-            normalizedMin *= scale; // 스케일링 적용
-            normalizedMax *= scale; // 스케일링 적용
+            normalizedMin *= scale;
+            normalizedMax *= scale;
 
             int vertexIndex = vertices.Count;
 
@@ -142,24 +141,41 @@ public class MapDataProcessor : MonoBehaviour
             triangles.Add(vertexIndex + 3);
         }
 
+        return new MeshData
+        {
+            vertices = vertices.ToArray(),
+            triangles = triangles.ToArray()
+        };
+    }
+
+    void CreateMesh(MeshData meshData, int batchIndex)
+    {
+        GameObject mapBatch = new GameObject($"MapBatch_{batchIndex}", typeof(MeshFilter), typeof(MeshRenderer));
+        MeshFilter meshFilter = mapBatch.GetComponent<MeshFilter>();
+        MeshRenderer meshRenderer = mapBatch.GetComponent<MeshRenderer>();
+
+        
+        meshRenderer.material = material;
+
         Mesh mesh = new Mesh();
-        mesh.vertices = vertices.ToArray();
-        mesh.triangles = triangles.ToArray();
+        mesh.vertices = meshData.vertices;
+        mesh.triangles = meshData.triangles;
         mesh.RecalculateNormals();
 
         meshFilter.mesh = mesh;
+        MeshCollider meshCollider = mapBatch.AddComponent<MeshCollider>();
+        meshCollider.convex = false;
+        meshCollider.sharedMesh = meshFilter.sharedMesh;
     }
-
 
     Vector2 NormalizeCoordinates(Vector2 coordinates)
     {
         float normalizedX = (coordinates.x - minX * 1000) / ((maxX - minX) * 1000);
         float normalizedY = (coordinates.y - minY * 1000) / ((maxY - minY) * 1000);
 
-        float scale = 10f; // 확대 비율을 조정 (1000 -> 10000)
+        float scale = 10f;
         return new Vector2(normalizedX * scale, normalizedY * scale);
     }
-
 
     public class MyDataClass
     {
@@ -167,6 +183,12 @@ public class MapDataProcessor : MonoBehaviour
         public float ymin { get; set; }
         public float xmax { get; set; }
         public float ymax { get; set; }
+    }
+
+    public class MeshData
+    {
+        public Vector3[] vertices { get; set; }
+        public int[] triangles { get; set; }
     }
 
     void OnDestroy()

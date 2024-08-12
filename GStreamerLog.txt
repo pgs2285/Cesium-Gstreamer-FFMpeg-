@@ -1,55 +1,56 @@
-<<<<<<< HEAD
-[17:00:45] Info: Render API: 2
-[17:00:45] mray_gstreamer_initialize
-[17:00:45] Initializing GStreamer Engine
-[17:00:45] Initializing GStreamer Engine - Done
-[17:00:45] Initializing GStreamer
-[17:00:46] GStreamerCore - Registering Elements!
-[17:00:46] GStreamerCore - GStreamer inited
-[17:00:46] Initializing GStreamer - Done
-[17:00:46] Entering main loop
-[17:00:46] mray_gstreamer_initialize
-[17:00:47] Info: Creating Pipeline: appsrc name=src format=time do-timestamp=true is-live=true block=true ! video/x-raw,format=RGB,width=640,height=480,framerate=30/1 ! videoconvert  ! video/x-raw,format=I420 ! videoconvert ! video/x-raw,format=I420 ! videoflip method=vertical-flip ! x264enc name=videoEnc bitrate=5000 tune=zerolatency pass=qual ! rtph264pay config-interval=1 name=pay0 pt=96 ! udpsink host=172.17.99.146 port=7000 sync=false 
-[17:00:47] Info: : GstPipelineHandler::CreatePipeline 
-[17:00:47] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
-[17:00:47] Info: : Pausing
-[17:00:47] Info: : Playing
-[17:00:47] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
-[17:00:47] Info: : Playing
-[17:00:47] Info: : Pipeline State Changes:  GST_STATE_PAUSED--> GST_STATE_PLAYING
-[17:01:25] Info: : Pausing
-[17:01:26] Info: : GstPipelineHandler::Stop 
-[17:01:26] Info: : GstPipelineHandler::Close 
-[17:01:26] Info: : GstPipelineHandler::Stop 
-[17:01:26] Info: : Pausing
-[17:01:26] Info: : GstPipelineHandler::Stop 
-[17:01:26] Info: : GstPipelineHandler::Close 
-[17:01:26] Info: : GstPipelineHandler::Stop 
-=======
-[09:02:47] Info: Render API: 2
-[09:02:47] mray_gstreamer_initialize
-[09:02:47] Initializing GStreamer Engine
-[09:02:47] Initializing GStreamer Engine - Done
-[09:02:47] Initializing GStreamer
-[09:02:48] GStreamerCore - Registering Elements!
-[09:02:48] GStreamerCore - GStreamer inited
-[09:02:48] Initializing GStreamer - Done
-[09:02:48] Entering main loop
-[09:02:48] mray_gstreamer_initialize
-[09:02:51] Info: Creating Pipeline: appsrc name=src format=time do-timestamp=true is-live=true block=true ! video/x-raw,format=RGB,width=640,height=480,framerate=30/1 ! videoconvert  ! video/x-raw,format=I420 ! videoconvert ! video/x-raw,format=I420 ! videoflip method=vertical-flip ! x264enc name=videoEnc bitrate=5000 tune=zerolatency pass=qual ! rtph264pay config-interval=1 name=pay0 pt=96 ! udpsink host=172.17.99.146 port=7000 sync=false 
-[09:02:51] Info: : GstPipelineHandler::CreatePipeline 
-[09:02:51] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
-[09:02:51] Info: : Pausing
-[09:02:51] Info: : Playing
-[09:02:51] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
-[09:02:51] Info: : Playing
-[09:02:51] Info: : Pipeline State Changes:  GST_STATE_PAUSED--> GST_STATE_PLAYING
-[09:03:40] Info: : Pausing
-[09:03:40] Info: : GstPipelineHandler::Stop 
-[09:03:40] Info: : GstPipelineHandler::Close 
-[09:03:40] Info: : GstPipelineHandler::Stop 
-[09:03:40] Info: : Pausing
-[09:03:40] Info: : GstPipelineHandler::Stop 
-[09:03:40] Info: : GstPipelineHandler::Close 
-[09:03:40] Info: : GstPipelineHandler::Stop 
->>>>>>> 9971ba4bfb3b64a981b9c73d952c63b595e43762
+[15:33:20] Info: Render API: 2
+[15:33:20] mray_gstreamer_initialize
+[15:33:20] Initializing GStreamer Engine
+[15:33:20] Initializing GStreamer Engine - Done
+[15:33:20] Initializing GStreamer
+[15:33:20] GStreamerCore - Registering Elements!
+[15:33:20] GStreamerCore - GStreamer inited
+[15:33:20] Initializing GStreamer - Done
+[15:33:20] Entering main loop
+[15:33:27] Info: : Pausing
+[15:33:27] Info: : GstPipelineHandler::Stop 
+[15:33:27] Info: : GstPipelineHandler::Close 
+[15:33:27] Info: : GstPipelineHandler::Stop 
+[15:33:27] Error: Source ID 5505107 was not found when attempting to remove it
+[15:33:27] Info: : Pausing
+[15:33:27] Info: : GstPipelineHandler::Stop 
+[15:33:27] Info: : GstPipelineHandler::Close 
+[15:33:27] Info: : GstPipelineHandler::Stop 
+[16:07:04] mray_gstreamer_initialize
+[16:07:11] Info: : Pausing
+[16:07:11] Info: : GstPipelineHandler::Stop 
+[16:07:11] Info: : GstPipelineHandler::Close 
+[16:07:11] Info: : GstPipelineHandler::Stop 
+[16:07:11] Error: Source ID 3801156 was not found when attempting to remove it
+[16:07:11] Info: : Pausing
+[16:07:11] Info: : GstPipelineHandler::Stop 
+[16:07:11] Info: : GstPipelineHandler::Close 
+[16:07:11] Info: : GstPipelineHandler::Stop 
+[17:07:37] mray_gstreamer_initialize
+[17:07:46] Info: : Pausing
+[17:07:46] Info: : GstPipelineHandler::Stop 
+[17:07:46] Info: : GstPipelineHandler::Close 
+[17:07:46] Info: : GstPipelineHandler::Stop 
+[17:07:46] Info: : Pausing
+[17:07:46] Info: : GstPipelineHandler::Stop 
+[17:07:46] Info: : GstPipelineHandler::Close 
+[17:07:46] Info: : GstPipelineHandler::Stop 
+[17:40:57] mray_gstreamer_initialize
+[17:41:01] Info: : Pausing
+[17:41:01] Info: : GstPipelineHandler::Stop 
+[17:41:01] Info: : GstPipelineHandler::Close 
+[17:41:01] Info: : GstPipelineHandler::Stop 
+[17:41:01] Error: Source ID 264642800 was not found when attempting to remove it
+[17:41:01] Info: : Pausing
+[17:41:01] Info: : GstPipelineHandler::Stop 
+[17:41:01] Info: : GstPipelineHandler::Close 
+[17:41:01] Info: : GstPipelineHandler::Stop 
+[17:41:45] mray_gstreamer_initialize
+[17:45:19] Info: : Pausing
+[17:45:19] Info: : GstPipelineHandler::Stop 
+[17:45:19] Info: : GstPipelineHandler::Close 
+[17:45:19] Info: : GstPipelineHandler::Stop 
+[17:45:19] Info: : Pausing
+[17:45:19] Info: : GstPipelineHandler::Stop 
+[17:45:19] Info: : GstPipelineHandler::Close 
+[17:45:19] Info: : GstPipelineHandler::Stop 
