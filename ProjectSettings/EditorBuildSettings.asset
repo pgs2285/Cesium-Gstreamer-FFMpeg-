@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/CesiumForUnitySamples/Scenes/TESTScene.unity
+    guid: fcf5ab87cf0953946b634078b75f62f6
+  - enabled: 0
     path: Assets/CesiumForUnitySamples/Scenes/01_CesiumWorld.unity
     guid: f247585a97d347241b998d973481c4f5
   m_configObjects:

@@ -2,17 +2,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
+
 public class GetCookie : MonoBehaviour
 {
     private string loginUrl = "https://demo3d.sistech3d.com/api/login";
     private string dataUrl = "http://localhost:3000/data/new/sinsung/tileset.json";
-
-    //      https://demo3d.sistech3d.com/data/new/tanbang/Data/e1214/tileset.json
+    ///data/new/sinsung/Data/c10/f21032/tileset.json
     private string token;
     public CesiumForUnity.Cesium3DTileset cesiumTileset;
 
+    private Stopwatch stopwatch = new Stopwatch();  // Initialize the stopwatch
+
     void Start()
     {
+        stopwatch.Start();  // Start the stopwatch when the script starts
         StartCoroutine(SendGuestLoginRequest());
     }
 
@@ -34,7 +39,6 @@ public class GetCookie : MonoBehaviour
             }
             else
             {
-                // 응답에서 토큰 추출
                 Dictionary<string, string> responseHeaders = www.GetResponseHeaders();
                 foreach (KeyValuePair<string, string> header in responseHeaders)
                 {
@@ -57,7 +61,24 @@ public class GetCookie : MonoBehaviour
             }
             yield return new WaitForSeconds(3000f);
         }
+    }
 
+    private void OnGUI()
+    {
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 24;  // Adjust font size as needed
+        style.normal.textColor = Color.green;
+
+        // Display the elapsed time from the stopwatch
+        string elapsedTime = string.Format("Elapsed Time: {0:00}:{1:00}:{2:00}",
+            stopwatch.Elapsed.Hours, stopwatch.Elapsed.Minutes, stopwatch.Elapsed.Seconds);
+
+        // Display the token (trimmed if too long)
+        string displayedToken = string.IsNullOrEmpty(token) ? "Token: Not received" : "Token: " + token;
+
+        // Display the stopwatch time and token in the top left corner
+        GUI.Label(new Rect(10, 10, Screen.width, 30), elapsedTime, style);
+        GUI.Label(new Rect(10, 40, Screen.width, 30), displayedToken, style);
     }
 
     void UpdateProxyServerWithToken(string token)
