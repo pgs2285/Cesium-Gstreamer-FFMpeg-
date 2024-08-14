@@ -5,13 +5,12 @@ using UnityEngine.Networking;
 using System.IO;
 using System;
 
-public class RaycastAndB3dmFinder : MonoBehaviour
+public class RaycastAndOverlap : MonoBehaviour
 {
     public float rayDistance = 100f; // Ray의 최대 거리
     public LayerMask layerMask;      // Raycast에 사용할 레이어 마스크
     public Material mat;
-    private string baseUrl = "http://localhost:3000/data/new/sinsung/Data/c10/f20301/";
-    public GameObject FindTargetParent;
+    public Transform FindTargetParent;
 
     void Update()
     {
@@ -34,7 +33,13 @@ public class RaycastAndB3dmFinder : MonoBehaviour
                         string tileName = collider.gameObject.transform.parent.name;
                         Debug.Log("Tile Name: " + tileName);
 
+                        // b3dm 파일 경로에서 baseUrl을 추출
+                        string fullB3dmPath = tileName + ".b3dm";  // 예: "http://localhost:3000/data/new/sinsung/Data/c10/f20301/d040.b3dm"
+                        string baseUrl = Path.GetDirectoryName(fullB3dmPath).Replace("\\", "/") + "/";
+
                         string tilesetUrl = baseUrl + "tileset.json";
+                        if (tilesetUrl.StartsWith("http:/"))
+                            tilesetUrl = tilesetUrl.Replace("http:/", "http://");
 
                         StartCoroutine(LoadTilesetJson(tilesetUrl));
                     }
@@ -43,19 +48,15 @@ public class RaycastAndB3dmFinder : MonoBehaviour
                 {
                     Debug.Log("No objects hit by the overlap box.");
                 }
-
-                // 시각적으로 확인하기 위해 충돌 지점에 큐브를 생성 (디버그 용도)
-                //GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                //cube.transform.position = hitPosition;
-                //cube.transform.localScale = new Vector3(2f, 2f, 2f);
-                //Destroy(cube, 5f); // 5초 후 큐브 제거
             }
         }
     }
 
     IEnumerator LoadTilesetJson(string url)
     {
+        Debug.Log(url);
         UnityWebRequest www = UnityWebRequest.Get(url);
+
         yield return www.SendWebRequest();
 
         if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
@@ -65,10 +66,10 @@ public class RaycastAndB3dmFinder : MonoBehaviour
         else
         {
             string jsonData = www.downloadHandler.text;
-   
+
             TilesetRoot rootObject = JsonUtility.FromJson<TilesetRoot>(jsonData);
 
-            // 루트 노드에서 시작하여 모든 .b3dm
+            // 루트 노드에서 시작하여 모든 .b3dm URI를 탐색합니다.
             FindAllB3dmUris(rootObject.root, url);
         }
     }
@@ -81,20 +82,19 @@ public class RaycastAndB3dmFinder : MonoBehaviour
             if (node.content.uri.EndsWith(".b3dm"))
             {
                 string fullUri = baseUrl.Substring(0, baseUrl.LastIndexOf('/') + 1) + node.content.uri;
-                Debug.Log("Found b3dm URI: " + fullUri);
 
-                // URI에서 파일 이름 추출 
-                string b3dmFileName = Path.GetFileNameWithoutExtension(node.content.uri);
+                // 이름이 'fullUri'와 정확히 일치하는 오브젝트를 찾습니다.
+                GameObject foundObject = FindChildByExactName(FindTargetParent, fullUri);
+                Debug.Log("Searching for: " + fullUri);
 
-                // Material 변경
-                GameObject foundObject = GameObject.Find(fullUri);
                 if (foundObject != null)
                 {
                     ChangeObjectColor(foundObject, Color.red);
+                    Debug.Log("Found GameObject: " + foundObject.name);
                 }
                 else
                 {
-                    Debug.LogWarning("GameObject not found for: " + b3dmFileName);
+                    Debug.LogWarning("GameObject not found for URI: " + fullUri);
                 }
             }
         }
@@ -107,6 +107,25 @@ public class RaycastAndB3dmFinder : MonoBehaviour
                 FindAllB3dmUris(child, baseUrl);
             }
         }
+    }
+
+    GameObject FindChildByExactName(Transform parent, string exactName)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == exactName)
+            {
+                return child.gameObject;
+            }
+
+            // 재귀적으로 자식의 자식들도 탐색
+            GameObject found = FindChildByExactName(child, exactName);
+            if (found != null)
+            {
+                return found;
+            }
+        }
+        return null;
     }
 
     void ChangeObjectColor(GameObject obj, Color color)

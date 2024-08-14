@@ -1,46 +1,70 @@
-[17:51:10] Info: Render API: 2
-[17:51:10] mray_gstreamer_initialize
-[17:51:10] Initializing GStreamer Engine
-[17:51:10] Initializing GStreamer Engine - Done
-[17:51:10] Initializing GStreamer
-[17:51:10] GStreamerCore - Registering Elements!
-[17:51:10] GStreamerCore - GStreamer inited
-[17:51:10] Initializing GStreamer - Done
-[17:51:10] Entering main loop
-[17:51:38] Info: : Pausing
-[17:51:38] Info: : GstPipelineHandler::Stop 
-[17:51:38] Info: : GstPipelineHandler::Close 
-[17:51:38] Info: : GstPipelineHandler::Stop 
-[17:51:38] Error: Source ID 5439561 was not found when attempting to remove it
-[17:51:38] Info: : Pausing
-[17:51:38] Info: : GstPipelineHandler::Stop 
-[17:51:38] Info: : GstPipelineHandler::Close 
-[17:51:38] Info: : GstPipelineHandler::Stop 
-[17:53:09] mray_gstreamer_initialize
-[17:53:41] Info: : Pausing
-[17:53:41] Info: : GstPipelineHandler::Stop 
-[17:53:41] Info: : GstPipelineHandler::Close 
-[17:53:41] Info: : GstPipelineHandler::Stop 
-[17:53:41] Error: Source ID 1211309152 was not found when attempting to remove it
-[17:53:41] Info: : Pausing
-[17:53:41] Info: : GstPipelineHandler::Stop 
-[17:53:41] Info: : GstPipelineHandler::Close 
-[17:53:41] Info: : GstPipelineHandler::Stop 
-[17:53:57] mray_gstreamer_initialize
-[17:54:09] Info: : Pausing
-[17:54:09] Info: : GstPipelineHandler::Stop 
-[17:54:09] Info: : GstPipelineHandler::Close 
-[17:54:09] Info: : GstPipelineHandler::Stop 
-[17:54:09] Info: : Pausing
-[17:54:09] Info: : GstPipelineHandler::Stop 
-[17:54:09] Info: : GstPipelineHandler::Close 
-[17:54:09] Info: : GstPipelineHandler::Stop 
-[17:55:11] mray_gstreamer_initialize
-[17:55:49] Info: : Pausing
-[17:55:49] Info: : GstPipelineHandler::Stop 
-[17:55:49] Info: : GstPipelineHandler::Close 
-[17:55:49] Info: : GstPipelineHandler::Stop 
-[17:55:49] Info: : Pausing
-[17:55:49] Info: : GstPipelineHandler::Stop 
-[17:55:49] Info: : GstPipelineHandler::Close 
-[17:55:49] Info: : GstPipelineHandler::Stop 
+[10:13:45] Info: Render API: 2
+[10:13:45] mray_gstreamer_initialize
+[10:13:45] Initializing GStreamer Engine
+[10:13:45] Initializing GStreamer Engine - Done
+[10:13:45] Initializing GStreamer
+[10:13:45] GStreamerCore - Registering Elements!
+[10:13:45] GStreamerCore - GStreamer inited
+[10:13:45] Initializing GStreamer - Done
+[10:13:45] Entering main loop
+[10:17:02] mray_gstreamer_initialize
+[10:19:05] mray_gstreamer_initialize
+[10:19:30] Info: : Pausing
+[10:19:30] Info: : GstPipelineHandler::Stop 
+[10:19:30] Info: : GstPipelineHandler::Close 
+[10:19:30] Info: : GstPipelineHandler::Stop 
+[10:19:30] Info: : Pausing
+[10:19:30] Info: : GstPipelineHandler::Stop 
+[10:19:30] Info: : GstPipelineHandler::Close 
+[10:19:30] Info: : GstPipelineHandler::Stop 
+[10:20:29] mray_gstreamer_initialize
+[10:20:49] Info: : Pausing
+[10:20:49] Info: : GstPipelineHandler::Stop 
+[10:20:49] Info: : GstPipelineHandler::Close 
+[10:20:49] Info: : GstPipelineHandler::Stop 
+[10:20:49] Info: : Pausing
+[10:20:49] Info: : GstPipelineHandler::Stop 
+[10:20:49] Info: : GstPipelineHandler::Close 
+[10:20:49] Info: : GstPipelineHandler::Stop 
+[10:24:32] mray_gstreamer_initialize
+[10:27:00] mray_gstreamer_initialize
+[10:28:15] Info: : Pausing
+[10:28:15] Info: : GstPipelineHandler::Stop 
+[10:28:15] Info: : GstPipelineHandler::Close 
+[10:28:15] Info: : GstPipelineHandler::Stop 
+[10:28:15] Info: : Pausing
+[10:28:15] Info: : GstPipelineHandler::Stop 
+[10:28:15] Info: : GstPipelineHandler::Close 
+[10:28:15] Info: : GstPipelineHandler::Stop 
+[10:28:36] mray_gstreamer_initialize
+[10:31:28] mray_gstreamer_initialize
+[10:32:24] mray_gstreamer_initialize
+[10:33:43] mray_gstreamer_initialize
+[10:34:19] Info: : Pausing
+[10:34:19] Info: : GstPipelineHandler::Stop 
+[10:34:19] Info: : GstPipelineHandler::Close 
+[10:34:19] Info: : GstPipelineHandler::Stop 
+[10:34:19] Error: Source ID 3801156 was not found when attempting to remove it
+[10:34:19] Info: : Pausing
+[10:34:19] Info: : GstPipelineHandler::Stop 
+[10:34:19] Info: : GstPipelineHandler::Close 
+[10:34:19] Info: : GstPipelineHandler::Stop 
+[10:37:53] mray_gstreamer_initialize
+[10:48:25] mray_gstreamer_initialize
+[10:50:04] Info: : Pausing
+[10:50:04] Info: : GstPipelineHandler::Stop 
+[10:50:04] Info: : GstPipelineHandler::Close 
+[10:50:04] Info: : GstPipelineHandler::Stop 
+[10:50:04] Info: : Pausing
+[10:50:04] Info: : GstPipelineHandler::Stop 
+[10:50:04] Info: : GstPipelineHandler::Close 
+[10:50:04] Info: : GstPipelineHandler::Stop 
+[10:56:28] mray_gstreamer_initialize
+[11:00:37] Info: : Pausing
+[11:00:37] Info: : GstPipelineHandler::Stop 
+[11:00:37] Info: : GstPipelineHandler::Close 
+[11:00:37] Info: : GstPipelineHandler::Stop 
+[11:00:37] Info: : Pausing
+[11:00:37] Info: : GstPipelineHandler::Stop 
+[11:00:37] Info: : GstPipelineHandler::Close 
+[11:00:37] Info: : GstPipelineHandler::Stop 
