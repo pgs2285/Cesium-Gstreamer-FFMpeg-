@@ -59,8 +59,8 @@ public class CoordinateSender : MonoBehaviour
     void Start()
     {
         // 예제 좌표 (위도, 경도)
-        float latitude = 36.351;
-        float longitude = 127.385;
+        float latitude = 36.351f;
+        float longitude = 127.385f;
 
         SendCoordinates(latitude, longitude);
     }
