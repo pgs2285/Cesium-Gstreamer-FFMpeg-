@@ -1,18 +1,28 @@
-[17:52:12] Info: Render API: 2
-[17:52:12] mray_gstreamer_initialize
-[17:52:12] Initializing GStreamer Engine
-[17:52:12] Initializing GStreamer Engine - Done
-[17:52:12] Initializing GStreamer
-[17:52:12] GStreamerCore - Registering Elements!
-[17:52:12] GStreamerCore - GStreamer inited
-[17:52:12] Initializing GStreamer - Done
-[17:52:12] Entering main loop
-[17:52:51] Info: : Pausing
-[17:52:52] Info: : GstPipelineHandler::Stop 
-[17:52:52] Info: : GstPipelineHandler::Close 
-[17:52:52] Info: : GstPipelineHandler::Stop 
-[17:52:52] Error: Source ID 5505107 was not found when attempting to remove it
-[17:52:52] Info: : Pausing
-[17:52:52] Info: : GstPipelineHandler::Stop 
-[17:52:52] Info: : GstPipelineHandler::Close 
-[17:52:52] Info: : GstPipelineHandler::Stop 
+[09:06:29] Info: Render API: 2
+[09:06:29] mray_gstreamer_initialize
+[09:06:29] Initializing GStreamer Engine
+[09:06:29] Initializing GStreamer Engine - Done
+[09:06:29] Initializing GStreamer
+[09:06:29] GStreamerCore - Registering Elements!
+[09:06:29] GStreamerCore - GStreamer inited
+[09:06:29] Initializing GStreamer - Done
+[09:06:29] Entering main loop
+[09:06:45] Info: : Pausing
+[09:06:45] Info: : GstPipelineHandler::Stop 
+[09:06:45] Info: : GstPipelineHandler::Close 
+[09:06:45] Info: : GstPipelineHandler::Stop 
+[09:06:45] Error: Source ID 369230080 was not found when attempting to remove it
+[09:06:45] Info: : Pausing
+[09:06:46] Info: : GstPipelineHandler::Stop 
+[09:06:46] Info: : GstPipelineHandler::Close 
+[09:06:46] Info: : GstPipelineHandler::Stop 
+[11:47:14] mray_gstreamer_initialize
+[11:47:20] Info: : Pausing
+[11:47:21] Info: : GstPipelineHandler::Stop 
+[11:47:21] Info: : GstPipelineHandler::Close 
+[11:47:21] Info: : GstPipelineHandler::Stop 
+[11:47:21] Error: Source ID 3032762224 was not found when attempting to remove it
+[11:47:21] Info: : Pausing
+[11:47:21] Info: : GstPipelineHandler::Stop 
+[11:47:21] Info: : GstPipelineHandler::Close 
+[11:47:21] Info: : GstPipelineHandler::Stop 
