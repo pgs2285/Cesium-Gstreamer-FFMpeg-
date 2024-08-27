@@ -134,33 +134,57 @@ public class EditorObjExporter : ScriptableObject
         return new Dictionary<string, ObjMaterial>();
     }
 
+    private static void MaterialsToFile(Dictionary<string, ObjMaterial> materialList, string folder, string filename)
+    {
+        using (StreamWriter sw = new StreamWriter(Path.Combine(folder, filename + ".mtl")))
+        {
+            foreach (KeyValuePair<string, ObjMaterial> kvp in materialList)
+            {
+                sw.Write("\nnewmtl " + kvp.Key + "\n");
+
+                if (!string.IsNullOrEmpty(kvp.Value.textureName))
+                {
+                    string relativeTexturePath = kvp.Value.textureName.Substring(kvp.Value.textureName.IndexOf("Assets"));
+                    sw.Write("map_Kd " + relativeTexturePath + "\n");
+                }
+                else
+                {
+                    sw.Write("map_Kd none\n");
+                }
+            }
+        }
+    }
 
     private static void MeshToFile(MeshFilter mf, string folder, string filename)
     {
         Dictionary<string, ObjMaterial> materialList = PrepareFileWrite();
 
-        using (StreamWriter sw = new StreamWriter(folder + "/" + filename + ".obj"))
+        using (StreamWriter sw = new StreamWriter(Path.Combine(folder, filename + ".obj")))
         {
-            sw.Write("mtllib ./" + filename + ".mtl\n");
-
+            sw.Write("mtllib " + filename + ".mtl\n");
             sw.Write(MeshToString(mf, materialList));
         }
+
+        MaterialsToFile(materialList, folder, filename);
     }
 
-    private static void MeshesToFile(MeshFilter[] mf, string folder, string filename)
+    private static void MeshesToFile(MeshFilter[] mfs, string folder, string filename)
     {
         Dictionary<string, ObjMaterial> materialList = PrepareFileWrite();
 
-        using (StreamWriter sw = new StreamWriter(folder + "/" + filename + ".obj"))
+        using (StreamWriter sw = new StreamWriter(Path.Combine(folder, filename + ".obj")))
         {
-            sw.Write("mtllib ./" + filename + ".mtl\n");
+            sw.Write("mtllib " + filename + ".mtl\n");
 
-            for (int i = 0; i < mf.Length; i++)
+            for (int i = 0; i < mfs.Length; i++)
             {
-                sw.Write(MeshToString(mf[i], materialList));
+                sw.Write(MeshToString(mfs[i], materialList));
             }
         }
+
+        MaterialsToFile(materialList, folder, filename);
     }
+
 
     private static bool CreateTargetFolder()
     {

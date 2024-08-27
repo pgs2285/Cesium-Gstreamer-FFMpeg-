@@ -1,0 +1,6 @@
+
+newmtl Cat
+map_Kd Assets/XR/Original/Cat_diffuse.jpg
+
+newmtl 12140_Skull_v3
+map_Kd Assets/ExportThings/Skull.jpg
