@@ -220,7 +220,8 @@ public class Final : MonoBehaviour
                 }
             }
         }
-
+        GetShaderTest getShaderTest = new GetShaderTest();
+        getShaderTest.SaveMaterialTexture(filename);
         MaterialsToFile(materialList, folder, filename);
     }
 
